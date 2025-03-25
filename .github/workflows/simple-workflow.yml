@@ -51,22 +51,22 @@ jobs:
       - name: Create a sample file
         run: echo "Hello World" > sample.txt
 
-      #Upload the sample file as an artifact
-      - name: Upload the sample file as an artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: sample-file
-          path: ./sample.txt
+      # #Upload the sample file as an artifact
+      # - name: Upload the sample file as an artifact
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: sample-file
+      #     path: ./sample.txt
 
   job_2:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Download the sample file artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: sample-file
-          path: ./sample-file
+      # - name: Download the sample file artifact
+      #   uses: actions/download-artifact@v2
+      #   with:
+      #     name: sample-file
+      #     path: ./sample-file
 
       #Print the content of the sample file
       - name: Print the content of the sample file
