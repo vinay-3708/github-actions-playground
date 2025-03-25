@@ -58,6 +58,14 @@ jobs:
       #     name: sample-file
       #     path: ./sample.txt
 
+      #List files in the current directory
+      - name: List files in the current directory
+        run: ls -al
+
+      #Print PWD
+      - name: Print PWD
+        run: pwd
+
   job_2:
     runs-on: ubuntu-latest
     needs: build
@@ -68,9 +76,9 @@ jobs:
       #     name: sample-file
       #     path: ./sample-file
 
-      #Print the content of the sample file
-      - name: Print the content of the sample file
-        run: cat ./sample-file/sample.txt
+      # #Print the content of the sample file
+      # - name: Print the content of the sample file
+      #   run: cat ./sample-file/sample.txt
 
       #List files in the current directory
       - name: List files in the current directory
