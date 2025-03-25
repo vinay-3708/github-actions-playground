@@ -13,6 +13,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# Define environment variables
+env:
+  VERSION: "1.0.0"
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -37,7 +41,7 @@ jobs:
       
       #Print the "VERSION" variable value
       - name: Print the "VERSION" variable value
-        run: echo ${{ var.VERSION }}
+        run: echo ${{ vars.VERSION }}
 
       #Print the API_KEY secret
       - name: Print the API_KEY secret
