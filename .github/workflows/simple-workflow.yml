@@ -34,3 +34,39 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      
+      #Print the "VERSION" variable value
+      - name: Print the "VERSION" variable value
+        run: echo ${{ var.VERSION }}
+
+      #Print the API_KEY secret
+      - name: Print the API_KEY secret
+        run: echo ${{ secrets.API_KEY }}
+
+      #Create a sample file
+      - name: Create a sample file
+        run: echo "Hello World" > sample.txt
+
+      #Upload the sample file as an artifact
+      - name: Upload the sample file as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: sample-file
+          path: ./sample.txt
+
+  job_2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the sample file artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: sample-file
+          path: ./sample-file
+
+      #Print the content of the sample file
+      - name: Print the content of the sample file
+        run: cat ./sample-file/sample.txt
+
+      #List files in the current directory
+      - name: List files in the current directory
+        run: ls -al 
