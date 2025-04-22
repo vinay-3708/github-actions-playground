@@ -33,11 +33,11 @@ jobs:
       run: docker build -t my-image-name:$VERSION .
 
     - name: Tag Docker image
-      run: docker tag my-image-name:$VERSION my-image-name:$VERSION
+      run: docker tag my-image-name:$VERSION ${{ secrets.DOCKER_USERNAME }}/my-image-name:$VERSION
 
     - name: list docker images
       run: docker images
 
     - name: Upload docker image to dockerhub
-      #run: docker push ${{ secrets.DOCKER_USERNAME }}/my-image-name:$VERSION
-      run: docker push my-image-name:$VERSION
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/my-image-name:$VERSION
+      #run: docker push my-image-name:$VERSION
