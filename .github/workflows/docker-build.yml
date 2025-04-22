@@ -1,0 +1,37 @@
+#Create a GitHub Actions workflow file to build a Docker image.
+# The workflow should be triggered on push events to the main branch and should run on the latest version of Ubuntu.
+# The workflow should include the following steps:
+# 1. Check out the repository code.
+# 2. Build the Docker image using the Dockerfile in the root of the repository.
+# 3. Tag the Docker image with the version specified in the VERSION environment variable.
+
+
+name: Build Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v3
+
+    # - name: Log in to Docker Hub
+    #   env:
+    #     DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+    #     DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    #   run: echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+
+    - name: Build Docker image
+      run: docker build -t my-image-name:$VERSION .
+
+    - name: Tag Docker image
+      run: docker tag my-image-name:$VERSION my-image-name:$VERSION
+
+    - name: list docker images
+      run: docker images
