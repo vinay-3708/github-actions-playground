@@ -39,4 +39,4 @@ jobs:
       run: docker images
 
     - name: Upload docker image to dockerhub
-      run: docker push docker.io/${{ secrets.DOCKER_USERNAME }}/my-image-name:$VERSION
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/my-image-name:$VERSION
